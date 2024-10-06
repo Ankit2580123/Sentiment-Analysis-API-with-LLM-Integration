@@ -1,0 +1,33 @@
+{% extends "header.html" %}
+{% block content %}
+    <h1 class="text-center mt-3">Sentiment Analysis Results</h1>
+    <div class="card mt-4">
+        <div class="card-body">
+            <h4 class="card-title">Sentiment Summary</h4>
+            <p class="card-text">
+                <strong>Positive:</strong> {{ summary.positive }}<br>
+                <strong>Negative:</strong> {{ summary.negative }}<br>
+                <strong>Neutral:</strong> {{ summary.neutral }}<br>
+
+                <strong>Total Reviews:</strong> {{ total_summary.total_reviews }}<br>
+                <strong>Total Positive Review:</strong> {{ total_summary.total_positive_count }}<br>
+                <strong>Total Negative Review:</strong> {{ total_summary.total_negative_count }}<br>
+                <strong>Total Neutral Review:</strong> {{ total_summary.total_neutral_count}}<br>
+                
+
+            </p>
+        </div>
+    </div>
+
+    <h3 class="mt-5">Detailed Review Sentiments</h3>
+    <div class="list-group mt-3">
+        {% for result in results %}
+            <div class="list-group-item list-group-item-action mb-2 shadow-none p-3 bg-body-tertiary rounded">
+                <strong>{{loop.index}}. Review:</strong> {{ result.review }}<br>
+                <strong>Sentiment:</strong> {{ result.sentiment.sentiment }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{{ url_for('upload_file') }}" class="btn btn-dark mt-5">Go Back</a>
+{% endblock %}
