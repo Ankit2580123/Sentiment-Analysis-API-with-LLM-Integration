@@ -134,6 +134,7 @@ def upload_file():
                 # print(review)
                 sentiment_result = analyze_sentiment(review)
                 # print(sentiment_result['sentiment'])
+                
                 sentiment = classify_sentiment(sentiment_result['sentiment'])
                 
             # Count sentiment classification
@@ -148,6 +149,7 @@ def upload_file():
                     "review": review,
                     "sentiment": sentiment_result
                 })
+                
                 # counter+=1
 
                 #This print statements used for testing purpose only if you want to check execution in terminal so you can uncomment.
